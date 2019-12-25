@@ -30,7 +30,6 @@ public class MovieCatalogResource {
 
     @GetMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable String userId) {
-
         //get all rated movie Ids
         UserRating ratings = restTemplate.getForObject("http://rating-data-service/ratingsdata/users/" + userId, UserRating.class);
 
@@ -42,7 +41,6 @@ public class MovieCatalogResource {
         })
         .collect(Collectors.toList());
     }
-
             /*reactive way
             Movie movie = webClientBuilder.build() //build pattern give me a client
                     .get() // get me what you have
@@ -51,5 +49,4 @@ public class MovieCatalogResource {
                     .bodyToMono(Movie.class) //whatever body you get convert it to Movie class
                     .block(); //convert from async to sync
             */
-
 }
